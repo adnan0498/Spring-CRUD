@@ -1,5 +1,6 @@
 package com.adnan.Spring_CRUD.service.impl;
 
+import com.adnan.Spring_CRUD.exception.CloudVendorNotFoundException;
 import com.adnan.Spring_CRUD.model.CloudVendor;
 import com.adnan.Spring_CRUD.repository.CloudVendorRepository;
 import com.adnan.Spring_CRUD.service.CloudVendorService;
@@ -36,6 +37,9 @@ public class CloudVendorServiceImpl implements CloudVendorService {
 
     @Override
     public CloudVendor getCloudVendor(String cloudVendorId) {
+        if (cloudVendorRepository.findById(cloudVendorId).isEmpty()) {
+            throw new CloudVendorNotFoundException("Requested cloud vendor does not exist");
+        }
         return cloudVendorRepository.findById(cloudVendorId).get();
     }
 
