@@ -21,7 +21,7 @@ public class CloudVendorController {
 
     @GetMapping("{vendorId}")
     public ResponseEntity<Object> getCloudVendorDetails(@PathVariable("vendorId") String vendorId) {
-        return ResponseHandler.responseBuilder("Requested vendor details are not given here", HttpStatus.OK, cloudVendorService.getCloudVendor(vendorId));
+        return ResponseHandler.responseBuilder("Requested vendor details are given here", HttpStatus.OK, cloudVendorService.getCloudVendor(vendorId));
     }
 
     @GetMapping()
